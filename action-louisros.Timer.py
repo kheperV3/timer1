@@ -34,9 +34,8 @@ def intent_callback_settimer(hermes, intentMessage, conf):
      
     Refer to the documentation for further details. 
     """ 
-<<<<<<< HEAD
-    delay = intentMessage.slots.valeur1.first().value
-
+    """delay = intentMessage.slots.valeur1.first().value
+    """
 
 
     current_session_id = intentMessage.session_id
