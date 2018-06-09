@@ -45,7 +45,7 @@ def action_wrapper(hermes, intentMessage, conf):
 
 
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "c'est fait bien sûr")
 
 
 if __name__ == "__main__":
