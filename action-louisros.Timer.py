@@ -5,7 +5,7 @@ import ConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
-import multiprocessing
+
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
@@ -36,14 +36,13 @@ def intent_callback_settimer(hermes, intentMessage, conf):
     """ 
     """delay = intentMessage.slots.valeur1.first().value
     """
-
+    print('on demarre')
+    conf = read_configuration_file(CONFIG_INI)
 
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait bien sûr")
 
 
 if __name__ == "__main__":
-    print('on demarre')
-    conf = read_configuration_file(CONFIG_INI)
     with Hermes("localhost:1883") as h:
         h.subscribe_intent("louisros:settimer", intent_callback_settimer).start()
