@@ -24,13 +24,8 @@ def read_configuration_file(configuration_file):
     except (IOError, ConfigParser.Error) as e:
         return dict()
 
-def subscribe_intent_callback(hermes, intentMessage):
-    conf = read_configuration_file(CONFIG_INI)
-    action_wrapper(hermes, intentMessage, conf)
 
-def alarm(secToWait):
-
-def action_wrapper(hermes, intentMessage, conf):
+def intent_callback_settimer(hermes, intentMessage, conf):
     """ Write the body of the function that will be executed once the intent is recognized. 
     In your scope, you have the following objects : 
     - intentMessage : an object that represents the recognized intent
@@ -49,6 +44,7 @@ def action_wrapper(hermes, intentMessage, conf):
 
 
 if __name__ == "__main__":
+    conf = read_configuration_file(CONFIG_INI)
     with Hermes("localhost:1883") as h:
-        h.subscribe_intent("louisros:settimer", subscribe_intent_callback) \
+        h.subscribe_intent("louisros:settimer", intent_callback_settimer) \
          .loop_forever()
