@@ -45,5 +45,4 @@ def intent_callback_settimer(hermes, intentMessage, conf):
 if __name__ == "__main__":
     conf = read_configuration_file(CONFIG_INI)
     with Hermes("localhost:1883") as h:
-        h.subscribe_intent("louisros:settimer", intent_callback_settimer) \
-         .loop_forever()
+        h.subscribe_intent("louisros:settimer", intent_callback_settimer).start()
